@@ -6,7 +6,7 @@ import cfgrib
 from datetime import datetime
 from pathlib import Path
 
-save_dir=Path("data")
+save_dir=Path("data/wind")
 save_dir.mkdir(exist_ok=True)
 
 def get_hrrr_data(date):
