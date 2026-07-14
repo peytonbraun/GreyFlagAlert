@@ -28,9 +28,9 @@ def send_alert():
     else:
         close_alert_issue()
         print(f'\u274C Conditions not met.')
-        print(f'Winds: {wind_ok[0].item()}')
-        print(f'Snow: {snow_ok.item()}')
-        print(f'Soil moisture: {soil_moisture_ok[0].item()}')
+        print(f'Winds: {wind_ok[0]}')
+        print(f'Snow: {snow_ok()}')
+        print(f'Soil moisture: {soil_moisture_ok[0]}')
 
 if __name__ == "__main__":
     send_alert()
