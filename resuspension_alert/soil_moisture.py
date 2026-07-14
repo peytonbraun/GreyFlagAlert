@@ -7,7 +7,7 @@ import numpy as np
 from pathlib import Path
 
 save_dir = Path("data/soil_moisture")
-save_dir.mkdir(exist_ok=True)
+save_dir.mkdir(parents=True, exist_ok=True)
 
 def check_soil_moisture(date):
     '''Checks whether soil moisture for a certain datetime is less than 25%. Returns true if condition is met.'''
