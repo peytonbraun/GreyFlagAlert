@@ -1,6 +1,6 @@
-from gfs import check_wind
-from snow import check_snow
-from soil_moisture import check_soil_moisture
+from resuspension_alert.gfs import check_wind
+from resuspension_alert.snow import check_snow
+from resuspension_alert.soil_moisture import check_soil_moisture
 import smtplib
 from email.message import EmailMessage
 from datetime import datetime
