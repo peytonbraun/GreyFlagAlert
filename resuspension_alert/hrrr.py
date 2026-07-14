@@ -43,8 +43,8 @@ def check_wind(date):
     
     wind_mask = (
     (ds.wind_speed >= 1) &
-    (ds.wind_direction >= 45) &
-    (ds.wind_direction <= 150)
+    (ds.wind_direction >= 0) &
+    (ds.wind_direction <= 360)
     )
 
     wind_ok = wind_mask.any()
