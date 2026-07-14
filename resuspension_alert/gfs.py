@@ -21,7 +21,7 @@ def check_wind(date):
     ds = get_gfs_data(date)
     
     wind_mask = (
-    (ds.wind_speed >= 15) &
+    (ds.wind_speed >= 1) &
     (ds.wind_direction >= 45) &
     (ds.wind_direction <= 150)
     )
