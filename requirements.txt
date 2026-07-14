@@ -7,4 +7,3 @@ pandas
 siphon
 metpy
 PyGithub
-certifi
