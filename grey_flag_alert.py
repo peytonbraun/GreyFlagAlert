@@ -16,5 +16,5 @@ def send_alert():
     if wind_ok[0] and snow_ok and soil_moisture_ok[0]:
         send_email(date)
 
-if __name__ == '__send_alert__':
+if __name__ == "__main__":
     send_alert()
