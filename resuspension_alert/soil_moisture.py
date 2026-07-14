@@ -4,10 +4,14 @@ import pandas as pd
 from herbie import Herbie
 import metpy
 import numpy as np
+from pathlib import Path
+
+save_dir = Path("data")
+save_dir.mkdir(exist_ok=True)
 
 def check_soil_moisture(date):
     '''Checks whether soil moisture for a certain datetime is less than 25%. Returns true if condition is met.'''
-    H = Herbie(date, model='hrrr', product='nat', save_dir='/AshResuspension', overwrite=False, verbose=False, fxx=2)
+    H = Herbie(date, model='hrrr', product='nat', save_dir=save_dir, overwrite=False, verbose=False, fxx=2)
     ds = H.xarray(r':SOILW:0.01-0.01 m below ground:anl:')
 
     distance =(
