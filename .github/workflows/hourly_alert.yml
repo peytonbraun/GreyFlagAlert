@@ -36,5 +36,6 @@ jobs:
         env:
           EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}
           EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
-          RECIPIENT_EMAIL: ${{ secrets.TEST_RECIPIENT_EMAIL }}
+          RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
           GITHUB_TOKEN: ${{ github.token }}
+          REQUESTS_CA_BUNDLE: ${{ env.pythonLocation }}/lib/python3.11/site-packages/certifi/cacert.pem
