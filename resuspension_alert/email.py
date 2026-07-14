@@ -7,6 +7,7 @@ from datetime import datetime
 import os
 
 def send_email(date):
+    date = date.replace(tzinfo=None)
     wind_ok = check_wind(date)
     snow_ok = check_snow(date)
     soil_moisture_ok = check_soil_moisture(date)
