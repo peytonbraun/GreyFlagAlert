@@ -8,7 +8,7 @@ from resuspension_alert.github_state import (alert_exists, create_alert_issue, c
 def send_alert():
     run_date = datetime.now(timezone.utc)
     
-    model_date = (run_date.replace(minute=0, second=0, microsecond=0)- timedelta(hours=1))
+    model_date = (run_date.replace(minute=0, second=0, microsecond=0)- timedelta(hours=2)).replace(tzinfo=None)
     
     wind_ok = check_wind(model_date)
     snow_ok = check_snow(run_date)
