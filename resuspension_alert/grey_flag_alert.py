@@ -11,7 +11,7 @@ def send_alert():
     model_date = (run_date.replace(minute=0, second=0, microsecond=0)- timedelta(hours=2)).replace(tzinfo=None)
     
     wind_ok = check_wind(model_date)
-    snow_ok = check_snow(run_date)
+    snow_ok = check_snow()
     soil_moisture_ok = check_soil_moisture(model_date)
 
     alert = wind_ok[0] and snow_ok and soil_moisture_ok[0]
