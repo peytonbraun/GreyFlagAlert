@@ -11,7 +11,7 @@ save_dir.mkdir(parents=True, exist_ok=True)
 
 def check_soil_moisture(date):
     '''Checks whether soil moisture for a certain datetime is less than 25%. Returns true if condition is met.'''
-    H = Herbie(date, model='hrrr', priority=['nomads', 'aws', 'google', 'azure', 'pando', 'pando2'], save_dir=save_dir, overwrite=False, verbose=False, fxx=0)
+    H = Herbie(date, model='hrrr', priority=['aws', 'nomads', 'google', 'azure', 'pando', 'pando2'], save_dir=save_dir, overwrite=False, verbose=False, fxx=0)
     H.download()
     ds = H.xarray(r':SOILW:0.01-0.01 m below ground:')
 
