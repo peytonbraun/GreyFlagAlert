@@ -7,7 +7,7 @@ from datetime import datetime
 from pathlib import Path
 
 save_dir=Path("data/wind")
-save_dir.mkdir(exist_ok=True)
+save_dir.mkdir(parents=True, exist_ok=True)
 
 def get_hrrr_data(date):
     '''Gets HRRR model data based on a datetime input. Returns a function in the variable ds.'''
