@@ -13,9 +13,9 @@ def send_email(date):
     snow_ok = check_snow()
     soil_moisture_ok = check_soil_moisture(model_date)
     
-    sender = os.environ['email_address']
-    recipient = os.environ['test_recipient_email']
-    app_password = os.environ['email_password']
+    sender = os.environ['EMAIL_ADDRESS']
+    recipient = os.environ['TEST_RECIPIENT_EMAIL']
+    app_password = os.environ['EMAIL_PASSWORD']
 
     msg = EmailMessage()
     msg["Subject"] = "Gray Flag Alert - GFS"
