@@ -4,6 +4,7 @@ from datetime import datetime
 
 def check_snow(date):
     '''Checks whether the Spirit Lake SNOTEL station had any snow on the selected date. Returns True if there is NO snow, False if there IS snow. Date must be input as a datetime.'''
+    date = date.strftime("%Y-%m-%d")
     url = 'https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/data'
     station_ID = '777:WA:SNTL'
     params = {
