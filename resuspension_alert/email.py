@@ -14,7 +14,7 @@ def send_email(date):
     soil_moisture_ok = check_soil_moisture(model_date)
     
     sender = os.environ['EMAIL_ADDRESS']
-    recipient = os.environ['TEST_RECIPIENT_EMAIL']
+    recipient = os.environ['RECIPIENT_EMAIL']
     app_password = os.environ['EMAIL_PASSWORD']
 
     msg = EmailMessage()
