@@ -6,7 +6,7 @@ import metpy
 import numpy as np
 from pathlib import Path
 
-save_dir = Path("data")
+save_dir = Path("data/soil_moisture")
 save_dir.mkdir(exist_ok=True)
 
 def check_soil_moisture(date):
