@@ -2,7 +2,7 @@ name: Grey Flag Alert
 
 on:
   schedule:
-    - cron: "16 * * * *"   # Run at the top of every hour (UTC)
+    - cron: "2 * * * *"   # Run at the top of every hour (UTC)
   workflow_dispatch:       # Allow manual runs from GitHub
 
 jobs:
