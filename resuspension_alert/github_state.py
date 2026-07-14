@@ -2,7 +2,7 @@ import os
 from github import Github
 
 repo_name = os.environ["GITHUB_REPOSITORY"]
-issue_title = "Grey Flag Alert Active"
+ISSUE_TITLE = "Grey Flag Alert Active"
 
 g = Github(os.environ["GITHUB_TOKEN"])
 repo = g.get_repo(repo_name)
