@@ -22,22 +22,13 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Update certificates
-        run: |
-          sudo apt-get update
-          sudo apt-get install --reinstall ca-certificates
-
-
       - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
-          pip install --upgrade certifi
+        run: pip install -r requirements.txt
 
       - name: Run Grey Flag Alert
         run: python -m resuspension_alert.grey_flag_alert
         env:
           EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}
           EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
-          RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
+          RECIPIENT_EMAIL: ${{ secrets.TEST_RECIPIENT_EMAIL }}
           GITHUB_TOKEN: ${{ github.token }}
-          REQUESTS_CA_BUNDLE: ${{ env.pythonLocation }}/lib/python3.11/site-packages/certifi/cacert.pem
