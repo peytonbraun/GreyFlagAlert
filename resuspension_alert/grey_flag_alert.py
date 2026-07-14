@@ -24,8 +24,10 @@ def send_alert():
         if not alert_exists():
             send_email(run_date)
             create_alert_issue(f"""Grey Flag Alert""")
+            print(f'\U00002705 Conditions met. Alert sent!')
     else:
         close_alert_issue()
+        print(f'\u274C Conditions not met.')
 
 if __name__ == "__main__":
     send_alert()
