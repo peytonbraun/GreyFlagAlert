@@ -7,7 +7,7 @@ import numpy as np
 
 def check_soil_moisture(date):
     '''Checks whether soil moisture for a certain datetime is less than 25%. Returns true if condition is met.'''
-    H = Herbie(date, model='hrrr', product='nat', save_dir='/AshResuspension', overwrite=False, verbose=False, fxx=1)
+    H = Herbie(date, model='hrrr', product='nat', save_dir='/AshResuspension', overwrite=False, verbose=False, fxx=2)
     ds = H.xarray(r':SOILW:0.01-0.01 m below ground:anl:')
 
     distance =(
