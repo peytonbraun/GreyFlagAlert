@@ -8,9 +8,10 @@ import os
 
 def send_email(date):
     date = date.replace(tzinfo=None)
-    wind_ok = check_wind(date)
+    model_date = (run_date.replace(minute=0, second=0, microsecond=0)- timedelta(hours=2)).replace(tzinfo=None)
+    wind_ok = check_wind(model_date)
     snow_ok = check_snow(date)
-    soil_moisture_ok = check_soil_moisture(date)
+    soil_moisture_ok = check_soil_moisture(model_date)
     
     sender = os.environ['email_address']
     recipient = os.environ['test_recipient_email']
