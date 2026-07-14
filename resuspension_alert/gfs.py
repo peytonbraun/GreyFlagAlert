@@ -7,7 +7,7 @@ from datetime import datetime
 
 def get_gfs_data(date):
     '''Gets GFS model data based on a datetime input. Returns a function in the variable ds.'''
-    H = Herbie(date, model="gfs", save_dir="/AshResuspension", overwrite=False, verbose=False, fxx=1)
+    H = Herbie(date, model="gfs", save_dir="/AshResuspension", overwrite=False, verbose=False, fxx=2)
     ds = H.xarray(r":(?:UGRD|VGRD):(?:850|825|800|775|750) mb:").sel(latitude=46.15, longitude=238, method='nearest')
     ds = ds.assign(wind_speed=np.sqrt(ds.u**2 + ds.v**2))
     ds = ds.assign(wind_direction=(270 - np.degrees(np.arctan2(ds.v, ds.u))) % 360)
