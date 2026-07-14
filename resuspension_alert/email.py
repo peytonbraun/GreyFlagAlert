@@ -3,7 +3,7 @@ from resuspension_alert.snow import check_snow
 from resuspension_alert.soil_moisture import check_soil_moisture
 import smtplib
 from email.message import EmailMessage
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 import os
 
 def send_email(date):
