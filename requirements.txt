@@ -2,7 +2,6 @@ herbie
 requests
 xarray
 numpy
-smtplib
 datetime
 pandas
 siphon
