@@ -7,10 +7,10 @@ from datetime import datetime
 import os
 
 def send_email(date):
-    date = date.replace(tzinfo=None)
+    run_date = date.replace(tzinfo=None)
     model_date = (run_date.replace(minute=0, second=0, microsecond=0)- timedelta(hours=2)).replace(tzinfo=None)
     wind_ok = check_wind(model_date)
-    snow_ok = check_snow(date)
+    snow_ok = check_snow(run_date)
     soil_moisture_ok = check_soil_moisture(model_date)
     
     sender = os.environ['email_address']
@@ -23,7 +23,7 @@ def send_email(date):
     msg["To"] = recipient
     
     msg.set_content(f"""
-    Conditions for resuspension met on {date} Z.
+    Conditions for resuspension met on {run_date} Z.
     
     Wind speed = {wind_ok[1]} knots
     Wind direction = {wind_ok[2]} degrees
