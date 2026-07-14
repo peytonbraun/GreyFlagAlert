@@ -29,7 +29,9 @@ jobs:
 
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: |
+          pip install -r requirements.txt
+          pip install --upgrade certifi
 
       - name: Run Grey Flag Alert
         run: python -m resuspension_alert.grey_flag_alert
