@@ -4,15 +4,16 @@ from soil_moisture import check_soil_moisture
 import smtplib
 from email.message import EmailMessage
 from datetime import datetime
+import os
 
 def send_email(date):
     wind_ok = check_wind(date)
     snow_ok = check_snow(date)
     soil_moisture_ok = check_soil_moisture(date)
     
-    sender = "pbraun.scholarships@gmail.com"
-    recipient = "peyton.braun@gmail.com"
-    app_password = "qhoxumktqtrvpqgb"
+    sender = os.environ['email_address']
+    recipient = os.environ['test_recipient_email']
+    app_password = os.environ['email_password']
 
     msg = EmailMessage()
     msg["Subject"] = "Gray Flag Alert - GFS"
