@@ -1,6 +1,7 @@
 import requests
 import pandas as pd
 from datetime import datetime, timedelta, timezone
+import time
 
 def check_snow():
     '''Checks whether the Spirit Lake SNOTEL station had any snow on the selected date. Returns True if there is NO snow, False if there IS snow. Date must be input as a datetime.'''
@@ -19,7 +20,21 @@ def check_snow():
         "returnOriginalValues": "false",
         "returnSuspectData": "false"
         }
-    response = requests.get(url, params=params)
+    
+    for attempt in range(3):
+        try:
+            response = requests.get(
+                url,
+                params=params,
+                timeout=20,
+            )
+            response.raise_for_status()
+            break
+    
+        except requests.exceptions.RequestException:
+            if attempt == 2:
+                raise
+            time.sleep(5)
 
     if response.status_code != 200:
         raise Exception(f"API error: {response.status_code}")
