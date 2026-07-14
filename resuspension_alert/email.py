@@ -1,4 +1,4 @@
-from resuspension_alert.gfs import check_wind
+from resuspension_alert.hrrr import check_wind
 from resuspension_alert.snow import check_snow
 from resuspension_alert.soil_moisture import check_soil_moisture
 import smtplib
