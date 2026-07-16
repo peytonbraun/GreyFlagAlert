@@ -1,4 +1,4 @@
-name: Grey Flag Alert
+name: Grey Flag Alert HRRR
 
 on:
   schedule:
