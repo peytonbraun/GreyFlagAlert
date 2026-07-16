@@ -23,7 +23,7 @@ def send_email(date):
     msg["To"] = recipient
     
     msg.set_content(f"""
-    Conditions for resuspension met on {run_date} Z.
+    Conditions for resuspension met on {run_date.hour} Z.
     
     Wind speed = {wind_ok[1]} knots
     Wind direction = {wind_ok[2]} degrees
