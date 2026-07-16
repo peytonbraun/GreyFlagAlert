@@ -30,6 +30,8 @@ def send_email(date):
     Wind level = {wind_ok[3]} mb
     Snow depth =  0 in
     Soil moisture = {soil_moisture_ok[1]}%
+
+    Wind at 800mb is {wind_ok[4]} knots from {wind_ok[5]} degrees.
     
     MSH webcam: https://volcview.wr.usgs.gov/ashcam-gui/webcam.html?webcam=msh-edifice
     """)
