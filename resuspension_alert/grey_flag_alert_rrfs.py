@@ -3,7 +3,7 @@ from resuspension_alert.rrfs import check_wind
 from resuspension_alert.snow import check_snow
 from resuspension_alert.soil_moisture import check_soil_moisture
 from resuspension_alert.email_rrfs import send_email
-from resuspension_alert.github_state import (alert_exists, create_alert_issue, close_alert_issue)
+from resuspension_alert.github_state_rrfs import (alert_exists, create_alert_issue, close_alert_issue)
 
 def send_alert():
     run_date = datetime.now(timezone.utc)
