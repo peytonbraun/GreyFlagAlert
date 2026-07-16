@@ -1,0 +1,34 @@
+name: Grey Flag Alert RRFS
+
+on:
+  schedule:
+    - cron: "2 * * * *"   # Run at the top of every hour (UTC)
+  workflow_dispatch:       # Allow manual runs from GitHub
+
+jobs:
+  alert:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      issues: write
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Grey Flag Alert
+        run: python -m resuspension_alert.grey_flag_alert_rrfs
+        env:
+          EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+          RECIPIENT_EMAIL: ${{ secrets.TEST_RECIPIENT_EMAIL }}
+          GITHUB_TOKEN: ${{ github.token }}
