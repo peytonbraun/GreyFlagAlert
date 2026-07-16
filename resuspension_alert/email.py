@@ -18,7 +18,7 @@ def send_email(date):
     app_password = os.environ['EMAIL_PASSWORD']
 
     msg = EmailMessage()
-    msg["Subject"] = "Gray Flag Alert - GFS"
+    msg["Subject"] = "Gray Flag Alert - HRRR"
     msg["From"] = sender
     msg["To"] = recipient
     
