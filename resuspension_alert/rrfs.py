@@ -42,9 +42,9 @@ def check_wind(date):
     ds = get_rrfs_data(date)
     
     wind_ok = (
-    (ds.wind_speed >= 10) &
-    (ds.wind_direction >= 45) &
-    (ds.wind_direction <= 160)
+    (ds.wind_speed >= 1) &
+    (ds.wind_direction >= 0) &
+    (ds.wind_direction <= 360)
     ).any(dim='isobaricInhPa')
 
     wind_index = ds.wind_speed.argmax(dim='isobaricInhPa')
