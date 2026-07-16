@@ -53,4 +53,7 @@ def check_wind(date):
     max_wind_direction = ds.wind_direction.isel(isobaricInhPa=wind_index)
     max_wind_level = ds.isobaricInhPa.isel(isobaricInhPa=wind_index)
 
-    return wind_ok.item(), max_wind.item(), max_wind_direction.item(), max_wind_level.item()
+    wind_800 = ds.wind_speed.sel(isobaricInhPa=800)
+    wind_direction_800 = ds.wind_direction.sel(isobaricInhPa=800)
+
+    return wind_ok.item(), max_wind.item(), max_wind_direction.item(), max_wind_level.item(), wind_800.item(), wind_direction_800.item()
