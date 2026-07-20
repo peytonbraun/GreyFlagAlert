@@ -9,12 +9,29 @@ from pathlib import Path
 save_dir=Path("data/wind")
 save_dir.mkdir(parents=True, exist_ok=True)
 
-def get_rrfs_data(date):
+def get_rrfs_data(date, max_back=3):
     '''Gets HRRR model data based on a datetime input. Returns a function in the variable ds.'''
-    H = Herbie(date, model="rrfs", priority=['nomads', 'aws', 'google', 'azure', 'pando', 'pando2'], save_dir=save_dir, overwrite=False, verbose=False, fxx=2)
-    H.download()
-    ds = H.xarray(r":(?:UGRD|VGRD):(?:850|825|800|775|750) mb:")
 
+    last_error = none
+
+    for hours_back in range(max_back+1):
+        run_time = date - timedelta(hours=hours_back)
+        fxx = 2 + hours_back
+
+        try:
+            H = Herbie(run_time, model="rrfs", priority=['nomads', 'aws', 'google', 'azure', 'pando', 'pando2'], save_dir=save_dir, overwrite=False, verbose=False, fxx=fxx)
+            H.download()
+            ds = H.xarray(r":(?:UGRD|VGRD):(?:850|825|800|775|750) mb:")
+            print(f'Using run {run_time:%Y-%m-%d %H}, {fxx:02d}')
+            break
+
+        except Exception as e:
+            last_error = e
+            print(f'{run_time:%H}Z {fxx:02d} unavailable.')
+
+    else:
+        raise RuntimeError('No useable RRFS data found.') from last_error
+        
     distance =(
         (ds.latitude - 46.24178)**2 +
         (ds.longitude - 237.80817)**2)
