@@ -10,9 +10,9 @@ save_dir=Path("data/wind")
 save_dir.mkdir(parents=True, exist_ok=True)
 
 def get_rrfs_data(date, max_back=3):
-    '''Gets HRRR model data based on a datetime input. Returns a function in the variable ds.'''
+    '''Gets RRFS model data based on a datetime input. Returns a function in the variable ds.'''
 
-    last_error = none
+    last_error = None
 
     for hours_back in range(max_back+1):
         run_time = date - timedelta(hours=hours_back)
